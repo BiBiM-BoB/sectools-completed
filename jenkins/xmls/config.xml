@@ -45,7 +45,7 @@
     <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
     <scriptPath>Jenkinsfile</scriptPath>
     <localMarker></localMarker>
-    <remoteJenkinsFile>Jenkinsfiles/debugC</remoteJenkinsFile>
+    <remoteJenkinsFile>$bibim</remoteJenkinsFile>
     <remoteJenkinsFileSCM class="hudson.plugins.git.GitSCM" plugin="git@4.14.2">
       <configVersion>2</configVersion>
       <userRemoteConfigs>
