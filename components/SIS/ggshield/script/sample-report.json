@@ -1,0 +1,100 @@
+{
+    "id": "/src",
+    "type": "path_scan",
+    "entities_with_incidents": [
+        {
+            "mode": "FILE",
+            "filename": "/src/credential-demo/expected/git/small-branch-foo.txt",
+            "incidents": [
+                {
+                    "policy": "Secrets detection",
+                    "occurrences": [
+                        {
+                            "match": "AKIA************OLIA",
+                            "type": "apikey",
+                            "line_start": 15,
+                            "line_end": 15,
+                            "index_start": 15,
+                            "index_end": 35,
+                            "pre_line_start": 15,
+                            "pre_line_end": 15
+                        }
+                    ],
+                    "type": "Generic High Entropy Secret",
+                    "validity": "no_checker",
+                    "ignore_sha": "1170682bfa9690f9c9cd847749d9c7ff7d564a8f443de6ca3d037bb029d5704e",
+                    "total_occurrences": 1
+                }
+            ],
+            "total_incidents": 1,
+            "total_occurrences": 1
+        },
+        {
+            "mode": "FILE",
+            "filename": "/src/credential-demo/repos/nogit/main.go",
+            "incidents": [
+                {
+                    "policy": "Secrets detection",
+                    "occurrences": [
+                        {
+                            "match": "AKIA************OLIA",
+                            "type": "apikey",
+                            "line_start": 20,
+                            "line_end": 20,
+                            "index_start": 14,
+                            "index_end": 34,
+                            "pre_line_start": 20,
+                            "pre_line_end": 20
+                        }
+                    ],
+                    "type": "Generic High Entropy Secret",
+                    "validity": "no_checker",
+                    "ignore_sha": "1170682bfa9690f9c9cd847749d9c7ff7d564a8f443de6ca3d037bb029d5704e",
+                    "total_occurrences": 1
+                }
+            ],
+            "total_incidents": 1,
+            "total_occurrences": 1
+        },
+        {
+            "mode": "FILE",
+            "filename": "/src/credential-demo/expected/git/small.txt",
+            "incidents": [
+                {
+                    "policy": "Secrets detection",
+                    "occurrences": [
+                        {
+                            "match": "AKIA************OLIA",
+                            "type": "apikey",
+                            "line_start": 15,
+                            "line_end": 15,
+                            "index_start": 15,
+                            "index_end": 35,
+                            "pre_line_start": 15,
+                            "pre_line_end": 15
+                        },
+                        {
+                            "match": "AKIA************OLIA",
+                            "type": "apikey",
+                            "line_start": 44,
+                            "line_end": 44,
+                            "index_start": 17,
+                            "index_end": 37,
+                            "pre_line_start": 44,
+                            "pre_line_end": 44
+                        }
+                    ],
+                    "type": "Generic High Entropy Secret",
+                    "validity": "no_checker",
+                    "ignore_sha": "1170682bfa9690f9c9cd847749d9c7ff7d564a8f443de6ca3d037bb029d5704e",
+                    "total_occurrences": 2
+                }
+            ],
+            "total_incidents": 1,
+            "total_occurrences": 2
+        }
+    ],
+    "total_incidents": 3,
+    "total_occurrences": 4,
+    "secrets_engine_version": "2.76.0"
+}
