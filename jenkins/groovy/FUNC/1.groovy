@@ -21,7 +21,8 @@ node {
         scmVars = checkout scm
     }
     stage('check branch') {
-        echo 'branch is ' + scmVars.GIT_BRANCH
+        echo 'This branch is ' + scmVars.GIT_BRANCH
+        echo 'Target branch is ' + branch
         
         if (scmVars.GIT_BRANCH != branch) {
             currentBuild.result = 'SUCCESS'
