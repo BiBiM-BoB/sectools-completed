@@ -11,6 +11,22 @@ def exec(container_name, command) {
     }
 }
 
+def scmVars
+
 node {
-  // need to change user automatically
+    dir("${env.WORKSPACE}") {
+        sh "pwd"
+    }
+    stage('checkout scm') {
+        scmVars = checkout scm
+    }
+    stage('check branch') {
+        echo 'branch is ' + scmVars.GIT_BRANCH
+        
+        if (scmVars.GIT_BRANCH != branch) {
+            currentBuild.result = 'SUCCESS'
+            return
+        }
+    }
+        
     def components_dir = "${JENKINS_HOME}" + '/userContent/components/'
