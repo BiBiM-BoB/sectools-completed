@@ -13,4 +13,4 @@ def exec(container_name, command) {
 
 node {
   // need to change user automatically
-  def components_dir = '/home/bibim/bibim/userContent/'
+    def components_dir = "${JENKINS_HOME}" + '/userContent/'
