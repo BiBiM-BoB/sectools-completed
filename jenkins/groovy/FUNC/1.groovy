@@ -12,5 +12,4 @@ def exec(container_name, command) {
 }
 
 node {
-  def components_dir = "${HOME}/bibim/userContent"
-
+  def components_dir = "${HOME}" + '/bibim/userContent'
