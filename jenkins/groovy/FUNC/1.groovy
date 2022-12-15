@@ -12,4 +12,5 @@ def exec(container_name, command) {
 }
 
 node {
-  def components_dir = "${HOME}" + '/bibim/userContent/'
+  // need to change user automatically
+  def components_dir = '/home/bibim/bibim/userContent/'
