@@ -32,7 +32,7 @@ node {
     }
     if (branchStatus != 1) {
         currentBuild.result = 'SUCCESS'
-        return
+        sh "exit 0"
     }
         
     def components_dir = "${JENKINS_HOME}" + '/userContent/components/'
