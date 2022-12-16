@@ -14,7 +14,6 @@ def exec(container_name, command) {
 def scmVars
 
 node {
-    def branchStatus = 1
     dir("${env.WORKSPACE}") {
         sh "pwd"
     }
@@ -27,12 +26,9 @@ node {
         
         if (scmVars.GIT_BRANCH != branch) {
             echo '[ALERT] This branch is not a target'
-            branchstatus = 0
+            currentBuild.result = 'SUCCESS'
+            sh "exit ${branch}"
         }
-    }
-    if (branchStatus != 1) {
-        currentBuild.result = 'SUCCESS'
-        sh "exit 0"
     }
         
     def components_dir = "${JENKINS_HOME}" + '/userContent/components/'
