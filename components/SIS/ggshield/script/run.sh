@@ -1,16 +1,22 @@
 #!/bin/sh
 
-SYNTAX="syntax: $0 <target_dir>"
+SYNTAX="syntax: $0 <target_dir> <pipeline_name>"
 
 if [ $# -eq "0" ]; then
-    echo "Target directory is required"
+    echo "Target directory and Pipeline name is required"
     echo "$SYNTAX"
     exit 1
 fi
 
+# Tool Meta Data
+STAGE="SIS"
+TOOL="ggshield"
+REPORT_MANAGER_DIRECTORY="/var/jenkins_home/userContent/components/Report_manager.py"
+
 VERSION="latest"
 BIBIMBOB_DIRECTORY=$HOME/bibim
 TARGET_DIRECTORY="$1"
+PIPELINE_NAME="$2"
 REPORT_DIRECTORY="$BIBIMBOB_DIRECTORY/report"
 REPORT_FORMAT="json"
 REPORT_FILE_NAME="sis-ggshield-report.$REPORT_FORMAT"
@@ -39,4 +45,4 @@ docker run --rm \
 
 echo "ggshield: scanning completed."
 
-ls -al $REPORT_DIRECTORY
+python3 $REPORT_MANAGER_DIRECTORY $PIPELINE_NAME $STAGE $TOOL $REPORT_DIRECTORY/$REPORT_FILE_NAME
