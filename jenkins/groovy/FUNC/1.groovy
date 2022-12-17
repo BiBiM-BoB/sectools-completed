@@ -21,13 +21,13 @@ node {
         if ("${env.BRANCH_NAME}" != branch_name) {
             echo '[ALERT] This branch is not a target'
             currentBuild.result = 'SUCCESS'
-            sh "exit ${branch}"
+            sh "exit ${branch_name}"
         }
         scmVars = checkout scm
     }
     stage('check branch') {
         echo 'This branch is ' + scmVars.GIT_BRANCH
-        echo 'Target branch is ' + branch
+        echo 'Target branch is ' + branch_name
     }
         
     def components_dir = "${JENKINS_HOME}" + '/userContent/components/'
