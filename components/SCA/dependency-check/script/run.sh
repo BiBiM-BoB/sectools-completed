@@ -51,7 +51,7 @@ docker run --rm \
     --volume "$DATA_DIRECTORY":/usr/share/dependency-check/data:z \
     --volume "$REPORT_DIRECTORY":/report:z \
     dependency-check:$DC_VERSION \
-    /bin/bash -c " \
+    /bin/sh -c " \
     /usr/share/dependency-check/bin/dependency-check.sh \
     --scan /src \
     --format "$REPORT_FORMAT" \
