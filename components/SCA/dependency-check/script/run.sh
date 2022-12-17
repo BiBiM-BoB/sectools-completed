@@ -51,10 +51,13 @@ docker run --rm \
     --volume "$DATA_DIRECTORY":/usr/share/dependency-check/data:z \
     --volume "$REPORT_DIRECTORY":/report:z \
     dependency-check:$DC_VERSION \
+    /bin/bash -c " \
+    /usr/share/dependency-check/bin/dependency-check.sh \
     --scan /src \
     --format "$REPORT_FORMAT" \
     --project "$DC_PROJECT" \
-    --out /report=
+    --out /report && \
+    cat /report/dependency-check-report.json" > $REPORT_DIRECTORY/'dependency-check-report.json'
 
 echo "ggshield: scanning completed."
 
