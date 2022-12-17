@@ -18,6 +18,9 @@ node {
         sh "pwd"
     }
     stage('checkout scm') {
+        when {
+            branch branch
+        }
         scmVars = checkout scm
     }
     stage('check branch') {
