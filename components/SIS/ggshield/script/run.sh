@@ -45,4 +45,6 @@ docker run --rm \
 
 echo "ggshield: scanning completed."
 
+cat $REPORT_DIRECTORY/$REPORT_FILE_NAME
+
 python3 $REPORT_MANAGER_DIRECTORY $PIPELINE_NAME $STAGE $TOOL $REPORT_DIRECTORY/$REPORT_FILE_NAME
