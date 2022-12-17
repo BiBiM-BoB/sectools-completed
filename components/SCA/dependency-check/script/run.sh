@@ -17,6 +17,7 @@ BIBIMBOB_DIRECTORY=$HOME/bibim
 TARGET_DIRECTORY="$1"
 PIPELINE_NAME="$2"
 REPORT_DIRECTORY="$BIBIMBOB_DIRECTORY/report"
+REPORT_FILE_NAME="dependency-check-report.json"
 REPORT_FORMAT="JSON"
 
 DC_VERSION="latest"
@@ -57,8 +58,12 @@ docker run --rm \
     --format "$REPORT_FORMAT" \
     --project "$DC_PROJECT" \
     --out /report && \
-    cat /report/dependency-check-report.json" > $REPORT_DIRECTORY/'dependency-check-report.json'
+    cat /report/dependency-check-report.json" > $REPORT_DIRECTORY/$REPORT_FILE_NAME
 
-echo "ggshield: scanning completed."
+echo "dependency-check: scanning completed."
 
-ls -al $REPORT_DIRECTORY
+cat $REPORT_DIRECTORY/$REPORT_FILE_NAME
+
+$SCRIPTPATH/parser.py $REPORT_DIRECTORY/$REPORT_FILE_NAME $REPORT_DIRECTORY/$REPORT_FILE_NAME
+
+python3 $REPORT_MANAGER_DIRECTORY $PIPELINE_NAME $STAGE $TOOL $REPORT_DIRECTORY/$REPORT_FILE_NAME
