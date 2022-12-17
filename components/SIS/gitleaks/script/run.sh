@@ -50,15 +50,6 @@ docker run --rm  \
     cat /report/$REPORT_FILE_NAME" > $REPORT_DIRECTORY/$REPORT_FILE_NAME
 
 echo "gitleaks: scanning completed."
-    
-docker run --rm \
-    --env GITGUARDIAN_API_KEY=1 \
-    --volume "$REPORT_DIRECTORY":/report \
-    ggshield:$VERSION secret scan \
-    --json \
-    path . --recursive -y > $REPORT_DIRECTORY/$REPORT_FILE_NAME || true
-
-echo "ggshield: scanning completed."
 
 ls -al $REPORT_DIRECTORY
 
