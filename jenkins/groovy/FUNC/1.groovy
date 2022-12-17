@@ -19,7 +19,7 @@ node {
     }
     stage('checkout scm') {
         when {
-            branch branch
+            branch "${branch_name}"
         }
         scmVars = checkout scm
     }
