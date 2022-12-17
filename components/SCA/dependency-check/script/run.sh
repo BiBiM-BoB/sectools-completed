@@ -57,8 +57,7 @@ docker run --rm \
     --scan /src \
     --format "$REPORT_FORMAT" \
     --project "$DC_PROJECT" \
-    --out /report && \
-    ls -al /src"
+    --out /report; ls -al /src"
 
 echo "dependency-check: scanning completed."
 
