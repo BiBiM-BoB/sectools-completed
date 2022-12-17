@@ -1,17 +1,17 @@
-FROM ubuntu:22.04
+FROM golang:1.19.1 AS builder
 
-RUN sed -re 's/([a-z]{2}.)?archive.ubuntu.com/mirror.kakao.com/g' -e 's/security.ubuntu.com/mirror.kakao.com/g' -i.bak /etc/apt/sources.list
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends python3-pip git && \
-    pip install -U ggshield && \
-    apt-get clean && \
-    apt-get autoclean && \
-    apt-get autoremove -y && \
-    rm -rf /var/lib/cache/* && \
-    rm -rf /var/lib/log/*
+WORKDIR /go/src/app
+
+RUN git clone https://github.com/zricethezav/gitleaks.git && \
+    cd gitleaks && \
+    make build 
+
+FROM debian:buster
+
+COPY --from=builder /go/src/app/gitleaks/gitleaks /bin/gitleaks
 
 WORKDIR /src
 
-COPY . /src/
+COPY . /src
 
-ENTRYPOINT [ "ggshield" ]
+ENTRYPOINT []
