@@ -18,20 +18,16 @@ node {
         sh "pwd"
     }
     stage('checkout scm') {
-        when {
-            branch "${branch_name}"
+        if ("${env.BRANCH_NAME}" != branch_name) {
+            echo '[ALERT] This branch is not a target'
+            currentBuild.result = 'SUCCESS'
+            sh "exit ${branch}"
         }
         scmVars = checkout scm
     }
     stage('check branch') {
         echo 'This branch is ' + scmVars.GIT_BRANCH
         echo 'Target branch is ' + branch
-        
-        if (scmVars.GIT_BRANCH != branch) {
-            echo '[ALERT] This branch is not a target'
-            currentBuild.result = 'SUCCESS'
-            sh "exit ${branch}"
-        }
     }
         
     def components_dir = "${JENKINS_HOME}" + '/userContent/components/'
