@@ -37,14 +37,14 @@ cp $SCRIPTPATH/Dockerfile ./ggshield_Dockerfile
 docker build -t ggshield:$VERSION -f ggshield_Dockerfile .
 
 docker run --rm \
-    --env GITGUARDIAN_API_KEY=1 \
+    --env GITGUARDIAN_API_KEY=A6aF18A3aB5C3DCEeEcaFdde2CeE9aB8dd5Ef12767709A142E0214A15cCEB2a17fAAf6F \
     --volume "$REPORT_DIRECTORY":/report \
     ggshield:$VERSION \
     /bin/bash -c " \
     ggshield secret scan \
     --json \
     path . --recursive -y && \
-    ls -al /report "
+    ls -al /report"
     
 # > $REPORT_DIRECTORY/$REPORT_FILE_NAME || true
 
