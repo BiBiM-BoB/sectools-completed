@@ -14,4 +14,4 @@ WORKDIR /src
 
 COPY . /src/
 
-ENTRYPOINT [ "ggshield" ]
+ENTRYPOINT []
