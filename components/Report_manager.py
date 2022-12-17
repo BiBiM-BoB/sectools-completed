@@ -18,7 +18,7 @@ def readJsonFromFile(filepath):
 def postJson(pipeline_name, stage, tool, json_data):
     global API_URL
     data = {
-        "pipeline_name": pipeline_name,
+        "pipelineName": pipeline_name,
         "stage": stage,
         "tool": tool,
         "data": [json_data]
