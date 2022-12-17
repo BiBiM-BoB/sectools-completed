@@ -39,9 +39,14 @@ docker build -t ggshield:$VERSION -f ggshield_Dockerfile .
 docker run --rm \
     --env GITGUARDIAN_API_KEY=1 \
     --volume "$REPORT_DIRECTORY":/report \
-    ggshield:$VERSION secret scan \
+    ggshield:$VERSION \
+    /bin/bash -c " \
+    ggshield secret scan \
     --json \
-    path . --recursive -y > $REPORT_DIRECTORY/$REPORT_FILE_NAME || true
+    path . --recursive -y && \
+    ls -al /report "
+    
+# > $REPORT_DIRECTORY/$REPORT_FILE_NAME || true
 
 echo "ggshield: scanning completed."
 
